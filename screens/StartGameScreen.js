@@ -1,4 +1,4 @@
-import {View, Text, TextInput, StyleSheet, Pressable, Alert} from "react-native"
+import {View, Text, TextInput, StyleSheet, Pressable, Alert,Dimensions, useWindowDimensions,KeyboardAvoidingView, ScrollView} from "react-native"
 import PrimaryButton from "../components/ui/PrimaryButton";
 import {useState} from 'react'
 import Colors from "../constants/Colors";
@@ -9,6 +9,8 @@ import InstructionText from "../components/ui/InstructionText";
 
 function StartGameScreen({pickedNumber}){
     const [userInput, setUserInput] = useState("")
+
+    const {width, height} = useWindowDimensions();
 
     function numberInputHandler(enteredText){
         setUserInput(enteredText)
@@ -29,9 +31,13 @@ function StartGameScreen({pickedNumber}){
         pickedNumber(number)
     }
 
-    return(
+    const marginTopDistance = height < 450 ?  9: 150
 
-        <View style={styles.rootContainer}>
+    return(
+        <ScrollView style={styles.screen}>
+        <KeyboardAvoidingView style={styles.screen} behavior="position">
+        <View style={[styles.rootContainer,{marginTop:marginTopDistance}]}>
+        {/* <View style={styles.rootContainer}> */}
             <Title>Guess Number Game</Title>
         
             <View style={styles.outerContainer}>
@@ -60,18 +66,30 @@ function StartGameScreen({pickedNumber}){
                 </View>
             </View>
         </View>
+        </KeyboardAvoidingView>
+        </ScrollView>
     )
 }
 
+const deviceHeight = Dimensions.get("window").height;
+
 const styles = StyleSheet.create({
+    screen:{
+        flex:1
+    },
     rootContainer:{
-        margin:30,
+        flex:1,
+        // marginTop:deviceHeight < 450 ?  9: 150,
+        // marginTop:80,
+        borderColor:"black",
+        alignItems:"center",
 
     },
     outerContainer:{
         justifyContent:"center",
         alignItems:"center",
-        marginTop:50,
+        marginTop:20,
+        marginHorizontal:20,
         padding:20,
         backgroundColor:Colors.purple800,
         borderRadius:8,

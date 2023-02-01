@@ -16,7 +16,9 @@ function Title({children}){
 export default Title;
 
 const styles = StyleSheet.create({
-    // titleContainer:{
+    titleContainer:{
+        alignItems:"center"
+    },
     //     borderColor:"#2e0040",
     //     // backgroundColor:Colors.purple800,
     //     elevation:40,
@@ -29,13 +31,16 @@ const styles = StyleSheet.create({
     //     shadowOpacity:0.8
     // }, 
     title:{
-       fontSize:34,
+       fontSize:33,
        
     //    fontWeight:"bold",
     //    borderWidth:2,
        paddingVertical:20,
        textAlign:"center",
-       color:"white"
+       color:"white",
+    //    maxWidth:"100%",
+    //    width:300,
+    //    borderWidth:2
        
     } 
 })

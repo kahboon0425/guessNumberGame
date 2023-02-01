@@ -1,14 +1,32 @@
-import { Text, View, Image ,StyleSheet} from "react-native";
+import { Text, View, Image ,StyleSheet,Dimensions, useWindowDimensions} from "react-native";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from "../components/ui/Title";
 import Colors from "../constants/Colors";
 
 function GameOverScreen({userNumber, roundsNumber, restartGame}){
+    const {width, height} = useWindowDimensions();
+
+    let imageSize = 300;
+
+    if(width < 380){
+        imageSize = 150;
+    }
+
+    if(height < 420){
+        imageSize = 80;
+    }
+
+    const imageStyle = {
+        width:imageSize,
+        height: imageSize,
+        borderRadius: imageSize / 2
+    }
+
     return(
         <View style={styles.rootContainer}>
-            <Title>GameOverScreen</Title>
+            <Title>Game Over Screen</Title>
             <View  style={styles.imageContainer} >
-                <Image style={styles.image} source={require("../assets/success.png")}/>
+                <Image style={[styles.image, imageStyle]} source={require("../assets/success.png")}/>
             </View>
             <View style={styles.textContainer}>
                 <Text style={styles.summary}>Your phone need 
@@ -27,21 +45,27 @@ function GameOverScreen({userNumber, roundsNumber, restartGame}){
 
 export default GameOverScreen;
 
+// const deviceWidth = Dimensions.get("window").width;
+
 const styles = StyleSheet.create({
     rootContainer:{
-        flex:1
+        flex:1,
+        marginTop:10
 
     },
     imageContainer:{
        
         justifyContent:"center",
         alignItems:"center",
-        marginTop:80
+        marginTop:40
     },
     image:{
-        width:300,
-        height:300,
-        borderRadius:150,
+        // width:300,
+        // height:300,
+        // if smaller than 380 use 150 otherwise using 300
+        // width:deviceWidth < 380 ? 150 :300,
+        // height:deviceWidth < 380 ? 150 :300,
+        // borderRadius:deviceWidth < 380 ? 75 :150,
     },
     textContainer:{
         alignItems:"center",

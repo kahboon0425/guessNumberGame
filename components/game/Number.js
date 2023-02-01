@@ -15,8 +15,8 @@ export default Number;
 const styles = StyleSheet.create({
     numberContainer:{
         borderWidth:2,
-        margin:24,
-        padding:24,
+        margin:13,
+        padding:23,
         alignItems:"center",
         justifyContent:"center",
         borderColor:"white",
