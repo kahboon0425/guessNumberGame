@@ -20,7 +20,8 @@
     "react-native-splash-screen": "^3.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9"
+    "@babel/core": "^7.12.9",
+    "prettier": "2.8.3"
   },
   "private": true
 }
